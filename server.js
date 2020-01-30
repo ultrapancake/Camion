@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
 
 const routes = require("./routes");
 
@@ -25,16 +26,28 @@ if (process.env.NODE_ENV === "production") {
 
 //routes
 //test post route:
-app.post("/", (req, res, next) => {
-  console.log("server post username: ");
-  console.log(req.body.username);
-  res.end();
-});
+// app.post("/", (req, res, next) => {
+//   console.log("server post username: ");
+//   console.log(req.body.username);
+//   res.end();
+// });
 //link to routes folder
-// app.use(routes);
+app.use(routes);
 
 // connection to mongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/thingy");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/camion").then(
+  () => {
+    /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
+
+    console.log("Connected to Mongo");
+  },
+  err => {
+    /** handle initial connection error */
+
+    console.log("error connecting to Mongo: ");
+    console.log(err);
+  }
+);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

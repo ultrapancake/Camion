@@ -4,7 +4,7 @@ const User = require("../../models/user");
 
 router.post("/", (req, res) => {
   console.log("user signup");
-  req.session.username = req.body.username;
+  //   req.session.username = req.body.username;
 
   const { username, password } = req.body;
   // ADD VALIDATION

@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 const session = require("express-session");
+const passport = require("./passport");
 
 const routes = require("./routes");
 
@@ -33,18 +34,11 @@ app.use(
   })
 );
 
-app.use((req, res, next) => {
-  console.log("req.session", req.session);
-  next();
-});
+// Passport
+app.use(passport.initialize());
+app.use(passport.session()); // calls the deserializeUser
 
 //routes
-//test post route:
-// app.post("/", (req, res, next) => {
-//   console.log("user signup");
-//   req.session.username = req.body.username;
-//   res.end();
-// });
 //link to routes folder
 app.use(routes);
 

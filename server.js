@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
+const session = require("express-session");
 
 const routes = require("./routes");
 
@@ -22,13 +23,26 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-//npm run build
+//sessions
+
+app.use(
+  session({
+    secret: "fraggle-rock", //pick a random string to make the hash that is generated secure
+    resave: false, //required
+    saveUninitialized: false //required
+  })
+);
+
+app.use((req, res, next) => {
+  console.log("req.session", req.session);
+  next();
+});
 
 //routes
 //test post route:
 // app.post("/", (req, res, next) => {
-//   console.log("server post username: ");
-//   console.log(req.body.username);
+//   console.log("user signup");
+//   req.session.username = req.body.username;
 //   res.end();
 // });
 //link to routes folder

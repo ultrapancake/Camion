@@ -66,9 +66,9 @@ class App extends Component {
           path="/login"
           render={() => <Login updateUser={this.updateUser} username={this.state.username} />}
         />
-        <Route
+       {/*} <Route
           //link to='/SignUp'
-          path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
+    path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />*/}
       </div>
     );
   }

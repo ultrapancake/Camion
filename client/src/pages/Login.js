@@ -53,8 +53,9 @@ class Login extends Component {
         console.log(error);
       });
   }
-
+  
   render() {
+    console.log(this.props);
     if (this.state.redirectTo) {
       return <Redirect to={{ pathname: this.state.redirectTo }} />;
     } else {

@@ -9,7 +9,7 @@ import Home from "../src/components/home";
 
 //Pages
 import Login from '../src/pages/Login';
-import SignUp from '../src/pages/SignUp';
+//import SignUp from '../src/pages/SignUp';
 
 class App extends Component {
   constructor() {

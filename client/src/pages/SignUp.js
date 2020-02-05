@@ -1,28 +1,26 @@
 import React, { Component } from "react";
+import { withRouter } from 'react-router'
 import axios from "axios";
 
 class Signup extends Component {
-  constructor() {
-    super();
-    this.state = {
+    state = {
       username: "",
       password: "",
       confirmPassword: ""
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-  handleChange(event) {
+
+  
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
-  handleSubmit(event) {
-    console.log("sign-up handleSubmit, username: ");
-    console.log(this.state.username);
+
+  handleSubmit = (event) => {
     event.preventDefault();
 
     //request to server to add a new username/password
+    console.log('handleSubmit Object:', { username: this.state.username, password: this.state.password });
     axios
       .post("/api/user/", {
         username: this.state.username,
@@ -32,10 +30,8 @@ class Signup extends Component {
         console.log(response);
         if (!response.data.errmsg) {
           console.log("successful signup");
-          this.setState({
-            //redirect to login page
-            redirectTo: "/login"
-          });
+          //Redirect to login page
+          this.props.history.push('/login', {user: this.state.username})
         } else {
           console.log("username already taken");
         }
@@ -47,6 +43,7 @@ class Signup extends Component {
   }
 
   render() {
+    console.log('doesPropsExist:', this.props);
     return (
       <div className="SignupForm">
         <h4>Sign up</h4>
@@ -102,4 +99,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);

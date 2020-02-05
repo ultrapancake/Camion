@@ -9,7 +9,7 @@ import Home from "../src/components/home";
 
 //Pages
 import Login from '../src/pages/Login';
-//import SignUp from '../src/pages/SignUp';
+import SignUp from '../src/pages/SignUp';
 
 class App extends Component {
   constructor() {
@@ -66,9 +66,9 @@ class App extends Component {
           path="/login"
           render={() => <Login updateUser={this.updateUser} username={this.state.username} />}
         />
-       {/*} <Route
+        <Route
           //link to='/SignUp'
-    path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />*/}
+    path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
       </div>
     );
   }

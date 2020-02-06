@@ -1,12 +1,9 @@
-# Camion
-Connecting suppliers, brokers, and carriers better than ever
-
-
-<p align="center">
-<img width="340" height="340" src="/client/public/readme_camionbanner" width="100%"/>
+<p align="left">
+<img width="650" src="client/public/readme_camionbanner.jpg" width="100%"/>
 </p>
 
----
+# Connecting suppliers, brokers, and carriers better than ever
+
 ### Not every market should be disrupted.  Camion improves the process.
 Shipping materials over the road has relied on the supplier-broker-carrier relationship for decades.  Recently, disruptive technologies have tried to remove the broker from the process to increase competition, drive down costs, and simplify the shipping process.  The problem with this approach is that it ignores the function of the broker and pushes any unforeseen logistical challenges (delays, weather, breakdowns, etc.) and detailed coordination of the pickup and drop-off process onto the supplier (consumer) and the carrier (service provider).  In most cases, neither party has anticipated the increased level of effort.
 
@@ -21,7 +18,7 @@ Camion leverages the proven, tested function of the broker in the supplier/carri
 
 ---
 <p align="center">
-<img width="650"  src="/client/public/readme_camiontrucks" width="80%"/>
+<img width="850"  src="client/public/readme_camiontrucks.jpg" width="80%"/>
 </p>
 
 ---

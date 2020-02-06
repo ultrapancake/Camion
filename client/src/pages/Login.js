@@ -1,70 +1,115 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
-import { Route } from "react-router-dom";
-// components
-import Signup from "../components/signUpForm";
-import LoginForm from "../components/loginForm";
-import Navbar from "../components/navLogin";
-import Home from "../components/home";
+//Components
+import Navbar from '../components/navLogin/index';
+//import Footer from '../components/footer/index';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loggedIn: false,
-      username: null
+
+class Login extends Component {
+  state = {
+      username: "",
+      password: "",
+      redirectTo: null
     };
 
-    this.getUser = this.getUser.bind(this);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.updateUser = this.updateUser.bind(this);
-  }
-
-  componentDidMount() {
-    this.getUser();
-  }
-
-  updateUser(userObject) {
-    this.setState(userObject);
-  }
-
-  getUser() {
-    axios.get("/api/user").then(response => {
-      console.log("Get user response: ");
-      console.log(response.data);
-      if (response.data.user) {
-        console.log("Get User: There is a user saved in the server session: ");
-
-        this.setState({
-          loggedIn: true,
-          username: response.data.user.username
-        });
-      } else {
-        console.log("Get user: no user");
-        this.setState({
-          loggedIn: false,
-          username: null
-        });
-      }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
     });
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("handleSubmit");
+
+    axios
+      .post("/api/user/login", {
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(response => {
+        console.log("login response: ");
+        console.log(response);
+        if (response.status === 200) {
+          // update App.js state
+          this.props.updateUser({
+            loggedIn: true,
+            username: response.data.username
+          });
+          // update the state to redirect to home
+          this.setState({
+            redirectTo: "/"
+          });
+        }
+      })
+      .catch(error => {
+        console.log("login error: ");
+        console.log(error);
+      });
+  }
+  
   render() {
-    return (
-      <div className="App">
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        {/* greet user if logged in: */}
-        {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
-        {/* Routes to different components */}
-        <Route exact path="/" component={Home} />
-        <Route
-          path="/login"
-          render={() => <LoginForm updateUser={this.updateUser} />}
-        />
-        <Route path="/signup" render={() => <Signup signup={this.signup} />} />
-      </div>
-    );
+    console.log(this.props);
+    if (this.state.redirectTo) {
+      return <Redirect to={{ pathname: this.state.redirectTo }} />;
+    } else {
+      return (
+        <div>
+          <Navbar />
+          <h4>Login</h4>
+          <form className="form-horizontal">
+            <div className="form-group">
+              <div className="col-1 col-ml-auto">
+                <label className="form-label" htmlFor="username">
+                  Username
+                </label>
+              </div>
+              <div className="col-3 col-mr-auto">
+                <input
+                  className="form-input"
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="Username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <div className="col-1 col-ml-auto">
+                <label className="form-label" htmlFor="password">
+                  Password:{" "}
+                </label>
+              </div>
+              <div className="col-3 col-mr-auto">
+                <input
+                  className="form-input"
+                  placeholder="password"
+                  type="password"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group ">
+              <div className="col-7"></div>
+              <button
+                className="btn btn-primary col-1 col-mr-auto"
+                onClick={this.handleSubmit}
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+          {/*<Footer />*/}
+        </div>
+      );
+    }
   }
 }
 
-export default App;
+export default Login;

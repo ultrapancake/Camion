@@ -3,12 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Navbar from "../src/components/navLogin";
-import Signup from "../src/components/signUpForm";
-import LoginForm from "../src/components/loginForm";
+//import Signup from "../src/components/signUpForm";
+//import LoginForm from "../src/components/loginForm";
 import Home from "../src/components/home";
 import Jumbotron from './components/splashHero';
 import Clients from './components/splashClients';
 import Works from './components/splashWorks';
+
+//Pages
+import Login from '../src/pages/Login';
+import SignUp from '../src/pages/SignUp';
 
 class App extends Component {
   constructor() {
@@ -61,10 +65,13 @@ class App extends Component {
         {/* Routes to different components */}
         <Route exact path="/" component={Home} />
         <Route
+          //link to='/Login' ...component 
           path="/login"
-          render={() => <LoginForm updateUser={this.updateUser} />}
+          render={() => <Login updateUser={this.updateUser} username={this.state.username} />}
         />
-        <Route path="/signup" render={() => <Signup signup={this.signup} />} />
+        <Route
+          //link to='/SignUp'
+          path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
         <Jumbotron />
         <Clients />
         <Works />

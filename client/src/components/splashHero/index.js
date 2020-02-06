@@ -11,12 +11,12 @@ const Jumbotron = () => {
         </p>
       </div>
       <div className="vehicle">
-        <img className="truck-one" src="/truck-one.svg" />
-        <img className="van-two" src="/van-two.svg" />
-        <img className="truck-two" src="/truck-two.svg" />
-        <img className="van-three" src="/van-three.svg" />
-        <img className="van-one" src="/van-one.svg" />
-        <img className="rail" src="/217608558-rail.svg" />
+        <img className="truck-one" src="/truck-one.svg" alt="" />
+        <img className="van-two" src="/van-two.svg" alt="" />
+        <img className="truck-two" src="/truck-two.svg" alt="" />
+        <img className="van-three" src="/van-three.svg" alt="" />
+        <img className="van-one" src="/van-one.svg" alt="" />
+        <img className="rail" src="/217608558-rail.svg" alt="" />
       </div>
     </div>
   );

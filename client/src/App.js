@@ -6,6 +6,9 @@ import Navbar from "../src/components/navLogin";
 //import Signup from "../src/components/signUpForm";
 //import LoginForm from "../src/components/loginForm";
 import Home from "../src/components/home";
+import Jumbotron from './components/splashHero';
+import Clients from './components/splashClients';
+import Works from './components/splashWorks';
 
 //Pages
 import Login from '../src/pages/Login';
@@ -68,7 +71,10 @@ class App extends Component {
         />
         <Route
           //link to='/SignUp'
-    path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
+          path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
+        <Jumbotron />
+        <Clients />
+        <Works />
       </div>
     );
   }

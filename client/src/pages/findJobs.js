@@ -42,7 +42,7 @@ class findJobs extends Component {
             .catch(err => console.log(err));
     };
 
-    deleteJob = is => {
+    deleteJob = id => {
         axios.delete('/api/jobs/' + id)
             .then(res => this.loadJobs())
             .catch(err => console.log(err));

@@ -5,6 +5,7 @@ import { List, ListItem } from "../components/list";
 import axios from 'axios'
 import './style.css';
 import API from '../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/utils/API';
+import DeleteBtn from '../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/components/DeleteBtn';
 
 //Broker and Carrier Dash
 
@@ -41,7 +42,7 @@ class findJobs extends Component {
             .catch(err => console.log(err));
     };
 
-    deleteJobs = is => {
+    deleteJob = is => {
         axios.delete('/api/jobs/' + id)
             .then(res => this.loadJobs())
             .catch(err => console.log(err));
@@ -71,6 +72,7 @@ class findJobs extends Component {
                                             job.dropOffDate, job.pickUpLoc, job.dropOffLoc,
                                             job.budget, job.message}
                                         </p>
+                                        <DeleteBtn onClick={() => this.deleteJob(job._id)} />
                                     </ListItem>
                                 ))}
                             </List>

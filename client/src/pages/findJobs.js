@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { Col, Row, Container } from '../components/grid';
 import { List, ListItem } from "../components/list";
 import axios from 'axios'
-import './style.css';
-import API from '../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/utils/API';
 import DeleteBtn from '../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/components/DeleteBtn';
 
 //Broker and Carrier Dash

@@ -9,8 +9,8 @@ import Home from "../src/components/home";
 import Login from '../src/pages/Login';
 import SignUp from '../src/pages/SignUp';
 import SupplyJobs from "../src/pages/SupplyJobs";
-//import FindJobs from '../src/pages/FindJobs';
-import Splash from "./pages/Splash";
+import FindJobs from '../src/pages/FindJobs';
+import Splash from "../src/pages/Splash";
 
 class App extends Component {
   constructor() {
@@ -73,10 +73,10 @@ class App extends Component {
           path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
         <Route
           //link to='/supplyJobs'
-          path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.supplyJobs} />} />
-        {/*<Route
+          path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.state.supplyJobs} />} />
+        <Route
           //link to='/findJobs'
-        path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />*/}
+        path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />
       </div>
     );
   }

@@ -3,8 +3,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Navbar from "../src/components/navLogin";
-//import Signup from "../src/components/signUpForm";
-//import LoginForm from "../src/components/loginForm";
 import Home from "../src/components/home";
 import Jumbotron from './components/splashHero';
 import Clients from './components/splashClients';
@@ -14,6 +12,7 @@ import Footer from './components/footer'
 //Pages
 import Login from '../src/pages/Login';
 import SignUp from '../src/pages/SignUp';
+import SupplyJobs from "../src/pages/SupplyJobs";
 
 class App extends Component {
   constructor() {
@@ -73,6 +72,9 @@ class App extends Component {
         <Route
           //link to='/SignUp'
           path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
+        <Route
+          //link to='/supplyJobs'
+          path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.supplyJobs} />} />
         <Jumbotron />
         <Clients />
         <Works />

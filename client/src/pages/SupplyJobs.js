@@ -1,60 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Col, Row, Container } from '../components/grid';
-import { List, ListItem } from "../components/list";
 import axios from 'axios'
-import DeleteBtn from '../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/components/DeleteBtn';
+
 
 class supplyJobs extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            jobs: [],
-            jobName: '',
-            size: '',
-            truckType: '',
-            weight: '',
-            pickUpDate: '',
-            dropOffDate: '',
-            pickUpLoc: '',
-            dropOffLoc: '',
-            budget: '',
-            message: '',
-        };
-    };
-
-    componentDidMount() {
-        this.loadJobs();
+    state = {
+        results: []
     }
-    loadJobs = () => {
-        axios.get('/api/jobs')
-            .then(res =>
-                this.setState({
-                    jobName: res.data, size: '', truckType: '',
-                    weight: '', pickUpDate: '', dropOffDate: '',
-                    pickUpLoc: '', dropOffLoc: '', budget: '', message: ''
-                })
-            )
-            .catch(err => console.log(err));
-    };
-
-    deleteJob = id => {
-        axios.delete('/api/jobs/' + id)
-            .then(res => this.loadJobs())
-            .catch(err => console.log(err));
-    };
-
-    handleInputChange = event => {
-        const { name, value } = event.target;
-        this.setState({
-            [name]: value
-        });
-    };
 
     handleFormSubmit = event => {
-        event.preventDefault();
-        if (this.state.title && this.state.author) {
-          axios.post({
+        let data = {
             jobName: this.state.jobName,
             size: this.state.size,
             truckType: this.state.truckType,
@@ -65,11 +21,26 @@ class supplyJobs extends Component {
             dropOffLoc: this.state.dropOffLoc,
             budget: this.state.budget,
             message: this.state.message
-          })
-            .then(res => this.loadBooks())
-            .catch(err => console.log(err));
-        }
+        };
+        event.preventDefault();
+        console.log(data);
+        axios.post({ data })
+            .catch(err => console.log(err))
+            .then(function (response) {
+                return response;
+            }).then(function (body) {
+                console.log(body);
+            });
     };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+
 
     render() {
         return (

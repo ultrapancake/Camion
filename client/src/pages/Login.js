@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from "axios";
 //Components
 import Navbar from '../components/navLogin/index';
-//import Footer from '../components/footer/index';
+import Footer from '../components/footer/index';
 
 
 class Login extends Component {
@@ -39,7 +39,7 @@ class Login extends Component {
           });
           // update the state to redirect to home
           this.setState({
-            redirectTo: "/"
+            redirectTo: "/home"
           });
         }
       })
@@ -105,7 +105,7 @@ class Login extends Component {
               </button>
             </div>
           </form>
-          {/*<Footer />*/}
+          <Footer />
         </div>
       );
     }

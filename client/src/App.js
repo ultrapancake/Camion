@@ -4,15 +4,13 @@ import axios from "axios";
 
 import Navbar from "../src/components/navLogin";
 import Home from "../src/components/home";
-import Jumbotron from './components/splashHero';
-import Clients from './components/splashClients';
-import Works from './components/splashWorks';
-import Footer from './components/footer'
 
 //Pages
 import Login from '../src/pages/Login';
 import SignUp from '../src/pages/SignUp';
 import SupplyJobs from "../src/pages/SupplyJobs";
+//import FindJobs from '../src/pages/FindJobs';
+import Splash from "./pages/Splash";
 
 class App extends Component {
   constructor() {
@@ -63,7 +61,8 @@ class App extends Component {
         {/* greet user if logged in: */}
         {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
         {/* Routes to different components */}
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Splash} />
+        <Route exact path='/home' component={Home} />
         <Route
           //link to='/Login' ...component 
           path="/login"
@@ -75,10 +74,9 @@ class App extends Component {
         <Route
           //link to='/supplyJobs'
           path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.supplyJobs} />} />
-        <Jumbotron />
-        <Clients />
-        <Works />
-        <Footer />
+        {/*<Route
+          //link to='/findJobs'
+        path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />*/}
       </div>
     );
   }

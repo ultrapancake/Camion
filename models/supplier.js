@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const schemaSupplier = new Schema({
-  jobName: { type: String },
+  jobName: { type: String, unique: true },
   size: { type: String },
   truckType: { type: String },
   weight: { type: Number },

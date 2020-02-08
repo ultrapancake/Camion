@@ -9,7 +9,7 @@ import Home from "../src/components/home";
 import Login from '../src/pages/Login';
 import SignUp from '../src/pages/SignUp';
 import SupplyJobs from "../src/pages/SupplyJobs";
-import FindJobs from '../src/pages/FindJobs';
+//import FindJobs from '../src/pages/FindJobs';
 import Splash from "./pages/Splash";
 
 class App extends Component {
@@ -74,9 +74,9 @@ class App extends Component {
         <Route
           //link to='/supplyJobs'
           path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.supplyJobs} />} />
-        <Route
+        {/*<Route
           //link to='/findJobs'
-          path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />
+        path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />*/}
       </div>
     );
   }

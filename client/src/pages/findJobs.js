@@ -7,53 +7,53 @@ import DeleteBtn from '../components/deleteBtn';
 
 //Broker and Carrier Dash
 
-class findJobs extends Component {
-    state = {
-        jobs: []
-    }
-    findJobs = () => {
-        const [availableJobs, setJobs] = useState([])
-        useEffect(() => {
-            axios.get('api/jobs')
-                .then(res => {
-                    console.log('res', res.data)
-                    setJobs(res.data)
-                }).catch(err => console.log(err))
-        }, []);
-        console.log(availableJobs);
+// class findJobs extends Component {
+//     state = {
+//         jobs: []
+//     }
+//     findJobs = () => {
+//         const [availableJobs, setJobs] = useState([])
+//         useEffect(() => {
+//             axios.get('api/jobs')
+//                 .then(res => {
+//                     console.log('res', res.data)
+//                     setJobs(res.data)
+//                 }).catch(err => console.log(err))
+//         }, []);
+//         console.log(availableJobs);
 
-        deleteJob((id) => {
-            axios.delete('/api/jobs/' + id)
-                .then(res => {
-                    console.log('res', res.data)
-                    setJobs(res.data)
-                }).catch(err => console.log(err))
-        }, []);
-    }
+//         deleteJob((id) => {
+//             axios.delete('/api/jobs/' + id)
+//                 .then(res => {
+//                     console.log('res', res.data)
+//                     setJobs(res.data)
+//                 }).catch(err => console.log(err))
+//         }, []);
+//     }
 
-    render() {
-        return (
-            <div className='findJobsContainer'>
-                {availableJobs.map((jobs) => {
-                    return (
-                        <row>
-                            <div class="card">
-                                <h5 class="card-header">{jobs.Job}</h5>
-                                <div class="card-body">
-                                    <h5 class="card-title"></h5>
-                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </row>
-                    )
-                })}
-            </div>
-        )
-    }
-}
+//     render() {
+//         return (
+//             <div className='findJobsContainer'>
+//                 {availableJobs.map((jobs) => {
+//                     return (
+//                         <row>
+//                             <div class="card">
+//                                 <h5 class="card-header">{jobs.Job}</h5>
+//                                 <div class="card-body">
+//                                     <h5 class="card-title"></h5>
+//                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+//                                     <a href="#" class="btn btn-primary">Go somewhere</a>
+//                                 </div>
+//                             </div>
+//                         </row>
+//                     )
+//                 })}
+//             </div>
+//         )
+//     }
+// }
 
-export default findJobs;
+// export default findJobs;
 
         // <div>
         // <Container fluid>

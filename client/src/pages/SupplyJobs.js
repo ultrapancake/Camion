@@ -2,34 +2,39 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 
+const tempData = {
+    jobName: '',
+    size: '',
+    truckType: '',
+    weight: '',
+    pickUpDate: '',
+    dropOffDate: '',
+    pickUpLoc: '',
+    dropOffLoc: '',
+    budget: '',
+    message: ''
+}
 
 class SupplyJobs extends Component {
     state = {
-        jobs: {
-            jobName: this.state.jobName,
-            size: this.state.size,
-            truckType: this.state.truckType,
-            weight: this.state.weight,
-            pickUpDate: this.state.pickUpDate,
-            dropOffDate: this.state.dropOffDate,
-            pickUpLoc: this.state.pickUpLoc,
-            dropOffLoc: this.state.dropOffLoc,
-            budget: this.state.budget,
-            message: this.state.message
-        }
+        jobs: {...tempData}
     }
 
     handleFormSubmit = event => {
         event.preventDefault();
         console.log(this.state.jobs);
-        axios.post('/api/supplier', this.state.jobs)
+        axios.post('/api/supplier', {
+            data: this.state.jobs
+        })
             .catch(err => console.log(err))
             .then(function (response) {
                 return response;
             }).then(function (body) {
                 console.log(body);
             });
-        this.setState({ jobs })
+        this.setState({ 
+            jobs: {...tempData}
+        })
     };
 
 

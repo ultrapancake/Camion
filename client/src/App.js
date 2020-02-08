@@ -9,6 +9,7 @@ import Home from "../src/components/home";
 import Jumbotron from './components/splashHero';
 import Clients from './components/splashClients';
 import Works from './components/splashWorks';
+import Footer from './components/footer'
 
 //Pages
 import Login from '../src/pages/Login';
@@ -75,6 +76,7 @@ class App extends Component {
         <Jumbotron />
         <Clients />
         <Works />
+        <Footer />
       </div>
     );
   }

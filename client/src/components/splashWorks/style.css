@@ -1,0 +1,67 @@
+.card {
+    width: 18rem;
+    padding: 0rem;
+}
+
+.account-type-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 600px;
+}
+
+.broker-image {
+    background-image: url("/broker-500x300.png");
+    width: 286px;
+    height: 172px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.shipper-image {
+    background-image: url("/shipper-500x300.png");
+    width: 286px;
+    height: 172px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@keyframes forklift {
+    0% {
+        left: 10%;
+      }
+      100% {
+        left: 80%;
+      }
+}
+
+.forklift {
+    height: 75px;
+    position: absolute;
+    top: 90px;
+    animation: forklift 10s linear infinite;
+    z-index: 2;
+}
+
+@keyframes brokertruck {
+    0% {
+        left: 0%;
+    }
+    95% {
+        left: 0%
+    }
+    100% {
+        left: 120%
+    }
+}
+
+.broker-truck {
+    height: 80px;
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    animation: brokertruck 10s linear infinite;
+    z-index: 3;
+}

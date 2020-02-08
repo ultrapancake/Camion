@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import { Col, Row, Container } from '../components/grid';
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import { Col, Row, Container } from "../components/grid";
 import { List, ListItem } from "../components/list";
 import axios from 'axios'
 import DeleteBtn from '../components/deleteBtn';

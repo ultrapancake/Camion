@@ -5,7 +5,7 @@ const Clients = () => {
   return (
     <div className="clientsContainer">
       <h2 className="client-h2">Lorem ipsum dolor sit amet</h2>
-      <div class="clientsTextContainer">
+      <div className="clientsTextContainer">
         <p className="client-p">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
           efficitur, justo et dictum vehicula, tortor justo ultrices enim,

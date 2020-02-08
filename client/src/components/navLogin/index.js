@@ -37,6 +37,7 @@ class Navbar extends Component {
 
     return (
       <div>
+
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <Link className="navbar-brand" href="#">
             <img
@@ -86,6 +87,7 @@ class Navbar extends Component {
                     </>
                   )}
                 </ul>
+
           </div>
         </nav>
       </div>

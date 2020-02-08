@@ -10,7 +10,7 @@ class supplyJobs extends Component {
     }
 
     handleFormSubmit = event => {
-        let data = {
+        let jobs = {
             jobName: this.state.jobName,
             size: this.state.size,
             truckType: this.state.truckType,
@@ -23,8 +23,8 @@ class supplyJobs extends Component {
             message: this.state.message
         };
         event.preventDefault();
-        console.log(data);
-        axios.post({ data })
+        console.log(jobs);
+        axios.post({ jobs })
             .catch(err => console.log(err))
             .then(function (response) {
                 return response;
@@ -44,31 +44,36 @@ class supplyJobs extends Component {
 
     render() {
         return (
-            <Container fluid>
-                <Row>
-                    <Col size='md-6 sm-12'>
-                        {this.state.jobs.length ? (
-                            <List>
-                                {this.state.jobs.map(job => (
-                                    <ListItem key={jobs._id}>
-                                        <strong>
-                                            {job.name}
-                                        </strong>
-                                        <p>
-                                            {job.size, job.size, job.truckType, job.weight, job.pickUpDate,
-                                            job.dropOffDate, job.pickUpLoc, job.dropOffLoc,
-                                            job.budget, job.message}
-                                        </p>
-                                        <DeleteBtn onClick={() => this.deleteJob(job._id)} />
-                                    </ListItem>
-                                ))}
-                            </List>
-                        ) : (
-                                <h3>No Results</h3>
-                            )}
-                    </Col>
-                </Row>
-            </Container>
+            <div className='supplyJobsContainer'>
+                <form>
+                    <div className="form-group">
+                        <label for="jobName">Job Name</label>
+                        <input type="name" class="form-control" id="jobName" placeholder="Your Job Name Here"></input>
+                    </div>
+                    <div className="form-group">
+                        <label for="jobSize">Size Of Shipment</label>
+                        <select className="form-control" id="jobSize">
+                            <option>TruckLoad (TL)</option>
+                            <option>Less-Than-TruckLoad (LTL)</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label for="truckType">Truck Type</label>
+                        <select className="form-control" id="truckType">
+                            <option>Box (Tractor Trailer)</option>
+                            <option>Refrigerated</option>
+                            <option>Hazmat</option>
+                            <option>FlatBed</option>
+                            <option>Van (Light Duty)</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label for="jobWeight">Shipment Weight</label>
+                        <input type="number" class="form-control" id="jobWeight" placeholder="Shipment Weight in Lbs."></input>
+                    </div>
+                </form>
+            </div>
+
         )
     }
 }

@@ -24,14 +24,15 @@ class SupplyJobs extends Component {
         };
         event.preventDefault();
         console.log(jobs);
-        axios.post({ jobs })
-            .catch(err => console.log(err))
-            .then(function (response) {
-                return response;
-            }).then(function (body) {
-                console.log(body);
-            });
+            axios.post({ jobs })
+                .catch(err => console.log(err))
+                .then(function (response) {
+                    return response;
+                }).then(function (body) {
+                    console.log(body);
+                });
     };
+
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -117,6 +118,9 @@ class SupplyJobs extends Component {
                             <label for="message">Special Instructions</label>
                             <textarea class="form-control" id="message" rows="3" placeholder='Enter Special Instructions Here'></textarea>
                         </div>
+                    </row>
+                    <row>
+                        <input class="btn btn-primary" type="submit" value="Submit"></input>
                     </row>
                 </form>
             </div>

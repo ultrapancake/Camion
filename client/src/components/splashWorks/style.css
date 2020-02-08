@@ -1,14 +1,13 @@
 .card {
     width: 18rem;
     padding: 0rem;
-    margin: 0 auto;
-    float: none;
 }
 
 .account-type-container {
-    width: 100%;
-    border-style: solid;
-    border-width: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 600px;
 }
 
 .broker-image {
@@ -31,10 +30,10 @@
 
 @keyframes forklift {
     0% {
-        left: 0%;
+        left: 10%;
       }
       100% {
-        left: 100%;
+        left: 80%;
       }
 }
 
@@ -43,17 +42,18 @@
     position: absolute;
     top: 90px;
     animation: forklift 10s linear infinite;
+    z-index: 2;
 }
 
 @keyframes brokertruck {
     0% {
         left: 0%;
     }
-    20% {
+    95% {
         left: 0%
     }
     100% {
-        left: 100%
+        left: 120%
     }
 }
 
@@ -63,4 +63,5 @@
     top: 90px;
     left: 0px;
     animation: brokertruck 10s linear infinite;
+    z-index: 3;
 }

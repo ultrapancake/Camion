@@ -3,9 +3,9 @@ import "./style.css";
 
 const Works = () => {
   return (
-    <div className="fluid-container account-type-container">
-      <div className="row">
-        <div className="card">
+    <div class="container mt-5 mb-5">
+      <div class="row account-type-container">
+        <div className="card shipper-card mr-2">
           <div className="card-img-top shipper-image" alt="Become a Shipper">
             <img className="forklift" alt="" src="/forklift.svg" />
           </div>
@@ -21,11 +21,10 @@ const Works = () => {
           </div>
         </div>
 
-        <div className="card">
-          <div
-            className="card-img-top broker-image"
-            alt="Become a Broker"
-          ><img className="broker-truck" alt="" src="/broker-truck.svg" /></div>
+        <div className="card broker-card">
+          <div className="card-img-top broker-image" alt="Become a Broker">
+            <img className="broker-truck" alt="" src="/broker-truck.svg" />
+          </div>
           <div className="card-body">
             <h5 className="card-title">Card title</h5>
             <p className="card-text">

@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { Col, Row, Container } from "../components/grid";
 import { List, ListItem } from "../components/list";
 import axios from "axios";
-import DeleteBtn from "../../../../../../Week 20_React/01-Activities/11-Stu_ReactRouter/Solved/client/src/components/DeleteBtn";
+import DeleteBtn from "../components/deleteBtn";
 
 //Broker and Carrier Dash
 
@@ -30,7 +30,7 @@ class findJobs extends Component {
   }
   loadJobs = () => {
     axios
-      .get("/api/jobs")
+      .get("/api/supplier")
       .then(res =>
         this.setState({
           jobName: res.data,
@@ -50,7 +50,7 @@ class findJobs extends Component {
 
   deleteJob = id => {
     axios
-      .delete("/api/jobs/" + id)
+      .delete("/api/supplier/" + id)
       .then(res => this.loadJobs())
       .catch(err => console.log(err));
   };

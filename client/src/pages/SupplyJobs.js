@@ -2,22 +2,19 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios'
 
-const tempData = {
-    jobName: '',
-    size: '',
-    truckType: '',
-    weight: '',
-    pickUpDate: '',
-    dropOffDate: '',
-    pickUpLoc: '',
-    dropOffLoc: '',
-    budget: '',
-    message: ''
-}
-
 class SupplyJobs extends Component {
     state = {
-        jobs: {...tempData}
+        jobs: [],
+        jobName: '',
+        size: '',
+        truckType: '',
+        weight: '',
+        pickUpDate: '',
+        dropOffDate: '',
+        pickUpLoc: '',
+        dropOffLoc: '',
+        budget: '',
+        message: ''
     }
 
     handleFormSubmit = event => {
@@ -33,7 +30,17 @@ class SupplyJobs extends Component {
                 console.log(body);
             });
         this.setState({ 
-            jobs: {...tempData}
+            jobs: [],
+            jobName: '',
+            size: '',
+            truckType: '',
+            weight: '',
+            pickUpDate: '',
+            dropOffDate: '',
+            pickUpLoc: '',
+            dropOffLoc: '',
+            budget: '',
+            message: ''
         })
     };
 
@@ -46,6 +53,9 @@ class SupplyJobs extends Component {
         this.setState({
             jobs
         });
+
+        console.log('event:', event)
+        console.log('jobs:', jobs)
     };
 
     render() {

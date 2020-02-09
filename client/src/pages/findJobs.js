@@ -1,50 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import axios from 'axios'
 import DeleteBtn from '../components/deleteBtn';
+import { List, ListItem } from "../components/list";
 
 //Broker and Carrier Dash
 
-const FindJobs = () => {
-    const [jobs, setJobs] = useState([])
-
-    useEffect(() => {
-        axios.get('api/supplier')
-            .then(res => {
-                console.log('res', res.data)
-                setJobs(res.data)
-            }).catch(err => console.log(err))
-    }, []);
-    console.log(jobs);
-
-    const deleteJob = (id) => {
-        axios.delete('/api/supplier/:id')
-            .then(res => {
-                console.log('res', res.data)
-                setJobs(res.data)
-            }).catch(err => console.log(err))
-        console.log(jobs);
+class FindJobs extends Component {
+    state = {
+        jobs: [],
+        id: '',
+        jobName: '',
+        size: '',
+        truckType: '',
+        weight: '',
+        pickUpDate: '',
+        dropOffDate: '',
+        pickUpLoc: '',
+        dropOffLoc: '',
+        budget: '',
+        message: ''
     }
 
-    return (
-        <div className='findJobsContainer'>
-            {jobs.map((shipment) => {
-                return (
-                    <row>
-                        <div class="card">
-                            <h5 class="card-header">{shipment.jobName}</h5>
-                            <div class="card-body">
-                                <h5 class="card-title"></h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                                <DeleteBtn onClick={deleteJob()}>Go somewhere</DeleteBtn>
+    componentDidMount() {
+        this.loadJobs();
+    }
+
+    loadJobs = () => {
+        axios.get('/api/supplier')
+            .then(res => {
+                console.log('res', res)
+                this.setState(
+                    {
+                        jobs: res.data,
+                        id: '',
+                        jobName: '',
+                        size: '',
+                        truckType: '',
+                        weight: '',
+                        pickUpDate: '',
+                        dropOffDate: '',
+                        pickUpLoc: '',
+                        dropOffLoc: '',
+                        budget: '',
+                        message: ''
+                    })
+            }).catch(err => console.log(err));
+    };
+
+    deleteJob = id => {
+        axios.delete(`/api/supplier/${id}`)
+            .then(res => {
+                console.log('res', res.data)
+            }).catch(err => console.log(err))
+    };
+
+    render() {
+        return (
+            <div className='findJobsContainer'>
+                <List>
+                    {this.state.jobs.map(job => (
+                        <ListItem key={job._id}>
+                            <div className="card">
+                                {console.log(this.state)}
+                                <h5 className="card-header">{this.state.jobName}</h5>
+                                <div className="card-body">
+                                    <h5 className="card-title"></h5>
+                                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                    <a href="#" className="btn btn-primary">Go somewhere</a>
+                                    <DeleteBtn onClick={(event) => {
+                                        event.preventDefault()
+                                        this.deleteJob(job._id)
+                                    }}
+                                        className='btn btn-danger' />
+                                </div>
                             </div>
-                        </div>
-                    </row>
-                )
-            })}
-        </div>
-    )
+                        </ListItem>
+                    ))}
+                </List>
+            </div>
+        )
+    }
 }
 
 

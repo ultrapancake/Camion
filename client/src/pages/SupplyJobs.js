@@ -4,7 +4,6 @@ import axios from 'axios'
 
 class SupplyJobs extends Component {
     state = {
-        jobs: [],
         jobName: '',
         size: '',
         truckType: '',
@@ -19,10 +18,21 @@ class SupplyJobs extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        console.log(this.state.jobs);
-        axios.post('/api/supplier', {
-            data: this.state.jobs
-        })
+
+        const jobsData = {
+            jobName: this.state.jobName,
+            size: this.state.size,
+            truckType: this.state.truckType,
+            weight: this.state.weight,
+            pickUpDate: this.state.pickUpDate,
+            dropOffDate: this.state.dropOffDate,
+            pickUpLoc: this.state.pickUpLoc,
+            dropOffLoc: this.state.dropOffLoc,
+            budget: this.state.budget,
+            message: this.state.message
+        }
+        console.log('Post form',this.state.jobs);
+        axios.post('/api/supplier', jobsData)
             .catch(err => console.log(err))
             .then(function (response) {
                 return response;
@@ -30,7 +40,6 @@ class SupplyJobs extends Component {
                 console.log(body);
             });
         this.setState({ 
-            jobs: [],
             jobName: '',
             size: '',
             truckType: '',
@@ -45,20 +54,16 @@ class SupplyJobs extends Component {
     };
 
 
-    handleInputChange = event => {
-        const { jobs } = this.state;
-        const name = event.target.name;
-        const value = event.target.value;
-        jobs[name] = value;
-        this.setState({
-            jobs
-        });
+    handleInputChange = (event) => {
+        let name = event.target.name
 
-        console.log('event:', event)
-        console.log('jobs:', jobs)
-    };
+        this.setState({
+          [name]: event.target.value
+        })
+      }
 
     render() {
+        console.log('state:', this.state.jobName)
         return (
             <div className='supplyJobsContainer'>
                 <form>
@@ -67,7 +72,7 @@ class SupplyJobs extends Component {
                             <label for="jobName">Job Name</label>
                             <input
                                 onChange={this.handleInputChange}
-                                type="name" class="form-control" id="jobName" placeholder="Your Job Name Here"
+                                type="name" name="jobName" class="form-control" id="jobName" placeholder="Your Job Name Here"
                             />
                         </div>
                     </row>
@@ -76,6 +81,7 @@ class SupplyJobs extends Component {
                             <label for="jobSize">Size Of Shipment</label>
                             <select 
                                 onChange={this.handleInputChange}
+                                name='size'
                                 className="form-control" id="jobSize">
                                 <option>TruckLoad (TL)</option>
                                 <option>Less-Than-TruckLoad (LTL)</option>
@@ -87,6 +93,7 @@ class SupplyJobs extends Component {
                             <label for="truckType">Truck Type</label>
                             <select 
                                 onChange={this.handleInputChange}
+                                name='truckType'
                                 className="form-control" id="truckType">
                                 <option>Box (Tractor Trailer)</option>
                                 <option>Refrigerated</option>
@@ -101,6 +108,7 @@ class SupplyJobs extends Component {
                             <label for="jobWeight">Shipment Weight</label>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='weight'
                                 type="number" class="form-control" id="jobWeight" placeholder="Shipment Weight in Lbs."
                                 />
                         </div>
@@ -110,6 +118,7 @@ class SupplyJobs extends Component {
                             <label for="pickUpDate">Pick Up Date</label>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='pickUpDate'
                                 type="date" class="form-control" id="pickUpDate"
                                 />
                         </div>
@@ -119,6 +128,7 @@ class SupplyJobs extends Component {
                             <label for="dropOffDate">Delievery Date</label>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='dropOffDate'
                                 type="date" class="form-control" id="dropOffDate"
                                 />
                         </div>
@@ -128,6 +138,7 @@ class SupplyJobs extends Component {
                             <label for="pickUpLoc">Pick Up Location</label>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='pickUpLoc'
                                 type="text" class="form-control" id="pickUpLoc" placeholder="Pick Up Location"
                                 />
                         </div>
@@ -137,6 +148,7 @@ class SupplyJobs extends Component {
                             <label for="dropOffLoc">Delievery Location</label>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='dropOffLoc'
                                 type="text" class="form-control" id="dropOffLoc" placeholder="Delivery Location"
                                 />
                         </div>
@@ -148,6 +160,7 @@ class SupplyJobs extends Component {
                             </div>
                             <input 
                                 onChange={this.handleInputChange}
+                                name='budget'
                                 type="text" class="form-control" id='budget' aria-label="Amount (to the nearest dollar)"
                                 />
                             <div class="input-group-append">
@@ -160,6 +173,7 @@ class SupplyJobs extends Component {
                             <label for="message">Special Instructions</label>
                             <textarea 
                                 onChange={this.handleInputChange}
+                                name='message'
                                 class="form-control" id="message" rows="3" placeholder='Enter Special Instructions Here'
                                 />
                         </div>

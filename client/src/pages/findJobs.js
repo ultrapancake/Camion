@@ -51,32 +51,40 @@ class FindJobs extends Component {
     deleteJob = id => {
         axios.delete(`/api/supplier/${id}`)
             .then(res => {
-                console.log('res', res.data)
+               const jobs =  this.state.jobs.filter(job => job._id !== id);
+               this.setState({jobs})
             }).catch(err => console.log(err))
     };
+
+    renderJobs = () => {
+        const { jobs } = this.state;
+        const jobsToBeRendered = jobs.map(job => {
+            return (
+                <div key={job._id} className="card">
+                    <h5 className="card-header">{job.jobName}</h5>
+                    <div className="card-body">
+                        <h5 className="card-title"></h5>
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <DeleteBtn onClick={(event) => {
+                            event.preventDefault()
+                            this.deleteJob(job._id)
+                        }}
+                            className='btn btn-danger' />
+                    </div>
+                </div>
+            )
+        })
+        return jobsToBeRendered;
+    }
 
     render() {
         return (
             <div className='findJobsContainer'>
                 <List>
-                    {this.state.jobs.map(job => (
-                        <ListItem key={job._id}>
-                            <div className="card">
-                                {console.log(this.state)}
-                                <h5 className="card-header">{this.state.jobName}</h5>
-                                <div className="card-body">
-                                    <h5 className="card-title"></h5>
-                                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                    <DeleteBtn onClick={(event) => {
-                                        event.preventDefault()
-                                        this.deleteJob(job._id)
-                                    }}
-                                        className='btn btn-danger' />
-                                </div>
-                            </div>
-                        </ListItem>
-                    ))}
+                    <ListItem>
+                        {this.renderJobs()}
+                    </ListItem>
                 </List>
             </div>
         )

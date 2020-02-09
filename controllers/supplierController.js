@@ -18,6 +18,7 @@ module.exports = {
   },
   create: function(req, res) {
     console.log("create new supplier job, check if job exists");
+    console.log('Server Response:', res.body)
     const supplierData = {
       jobName: req.body.jobName,
       size: req.body.size,
@@ -35,6 +36,7 @@ module.exports = {
       jobName: supplierData.jobName
     })
       .then(Supplier => {
+        console.log('What the hell is this:', Supplier);
         if (Supplier) {
           res.json({
             error: "This Job already exists"

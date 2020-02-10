@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios'
 import DeleteBtn from '../components/deleteBtn';
 import { List, ListItem } from "../components/list";
+import Footer from '../components/footer';
 
 //Broker and Carrier Dash
 
@@ -94,6 +95,7 @@ class FindJobs extends Component {
                         {this.renderJobs()}
                     </ListItem>
                 </List>
+                <Footer />
             </div>
         )
     }

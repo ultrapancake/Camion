@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router'
 import axios from "axios";
+import Footer from '../components/footer';
 
 class Signup extends Component {
     state = {
@@ -94,6 +95,7 @@ class Signup extends Component {
             </button>
           </div>
         </form>
+        <Footer />
       </div>
     );
   }

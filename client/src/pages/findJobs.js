@@ -64,8 +64,16 @@ class FindJobs extends Component {
                     <h5 className="card-header">{job.jobName}</h5>
                     <div className="card-body">
                         <h5 className="card-title"></h5>
-                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" className="btn btn-primary">Go somewhere</a>
+                        <p className="card-text"><b>Job Size:</b> {job.size}</p>
+                        <p className="card-text"><b>Truck Type:</b> {job.truckType}</p>
+                        <p className="card-text"><b>Pick Up Date:</b> {job.pickUpDate}</p>
+                        <p className="card-text"><b>Pick Up Location:</b> {job.pickUpLoc}</p>
+                        <p className="card-text"><b>Drop Off Date:</b> {job.dropOffDate}</p>
+                        <p className="card-text"><b>Drop Off Location:</b> {job.dropOffLoc}</p>
+                        <p className="card-text"><b>Weight:</b> {job.weight} lbs.</p>
+                        <p className="card-text"><b>Budget:</b> ${job.budget}.00</p>
+                        <p className="card-text"><b>Special Instructions:</b> {job.message}</p>
+                        <a href="#" className="btn btn-primary">Claim Job</a>
                         <DeleteBtn onClick={(event) => {
                             event.preventDefault()
                             this.deleteJob(job._id)

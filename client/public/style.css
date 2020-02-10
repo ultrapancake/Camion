@@ -5,7 +5,7 @@ html {
     --tertiary-color: #e4f9ff;
 }
 
-p {
+body, p {
     font-family: 'Open Sans', sans-serif!important;
     font-weight: 400 !important;
 }
@@ -34,6 +34,7 @@ button:hover {
     background: url('./183139696-2100x475.png');
     background-repeat: no-repeat;
     background-position: bottom;
+    padding: 0px !important;
 }
 
 .login-container {
@@ -41,6 +42,7 @@ button:hover {
     background: url('./183139579-2100x741.png');
     background-repeat: no-repeat;
     background-position: bottom;
+    padding: 0px !important;
 }
 
 .signup-card {
@@ -68,4 +70,54 @@ button:hover {
 
 .form-input {
     border: 1px solid #EEEEEE;
+}
+
+.supply-jobs-container {
+    height: 95vh;
+    background: url('./184427994-2600x431.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: stretch;
+    padding: 0px !important;
+}
+
+.supply-jobs-card {
+    margin-top: 8vh;
+    width: 30rem !important;
+}
+
+.truck-type {
+    padding-top: 20px;
+}
+
+.shipment-weight {
+    padding-top: 50px;
+}
+
+.pick-up-date {
+    padding-top: 30px;
+}
+
+.drop-off-date {
+    padding-top: 55px;
+}
+
+.pick-up-location {
+    padding-top: 70px
+}
+
+.drop-off-location {
+    padding-top: 35px;
+}
+
+.budget {
+    padding-top: 30px;
+}
+
+.special-instructions {
+    padding-top: 10px
+}
+
+.submit-button {
+    margin-top: 50px;
 }

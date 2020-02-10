@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Navbar from "../src/components/navLogin";
-import Home from "./pages/Home";
 
 //Pages
 import Login from '../src/pages/Login';
+import Home from "./pages/Home";
 import SignUp from '../src/pages/SignUp';
 import SupplyJobs from "../src/pages/SupplyJobs";
 import FindJobs from '../src/pages/FindJobs';

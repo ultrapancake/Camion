@@ -37,9 +37,8 @@ class Navbar extends Component {
 
     return (
       <div>
-
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Link className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             <img
               src="/camion_logo.svg"
               className="d-inline-block align-top camion-logo"
@@ -58,36 +57,35 @@ class Navbar extends Component {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav">
-                  {loggedIn ? (
-                    <>
-                      <li className="nav-item">
-                        <Link to="/" className="nav-link" onClick={this.logout}>
-                          <span>Logout</span>
-                        </Link>
-                      </li>
-                    </>
-                  ) : (
-                    <>
-                      <li className="nav-item">
-                        <Link to="/home" className="nav-link">
-                          <span>Home</span>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link to="/signup" className="nav-link">
-                          <span>Sign Up</span>
-                        </Link>
-                      </li>
-                      <li className="nav-item">
-                        <Link to="/login" className="nav-link">
-                          <span>Log In</span>
-                        </Link>
-                      </li>
-                    </>
-                  )}
-                </ul>
-
+            <ul className="navbar-nav ml-auto">
+              {loggedIn ? (
+                <>
+                  <li className="nav-item nav-home">
+                    <Link to="/home" className="nav-link">
+                      <span>Home</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item nav-logout">
+                    <Link to="/" className="nav-link" onClick={this.logout}>
+                      <span>Logout</span>
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item nav-login">
+                    <Link to="/login" className="nav-link">
+                      <span>Login</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item nav-signup">
+                    <Link to="/signup" className="nav-link">
+                      <span className="signup-text">Sign Up</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
         </nav>
       </div>

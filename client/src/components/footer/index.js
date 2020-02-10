@@ -3,8 +3,8 @@ import './style.css';
 
 const Footer = () => {
     return (
-    <div class="navbar">
-        <p class="copywrite">©2020 Camion</p>
+    <div className="navbar">
+        <p className="copywrite">©2020 Camion</p>
     </div>
     )
 }

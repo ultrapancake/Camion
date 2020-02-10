@@ -3,10 +3,16 @@
     padding: 0rem;
 }
 
-.job-type-container {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 45vh;
-    position: relative;
-    width: 600px;
+.create-card, .find-card {
+    margin-top: 20vh;
+}
+.page-container {
+    height: 95vh;
+    background: url('/183560531-2100x1189.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.create-image, .find-image {
+    height: 200px;
 }

@@ -28,3 +28,44 @@ button:hover {
     background-color: var(--highlight-color) !important;
     border-color: var(--highlight-color) !important;
 }
+
+.signup-container {
+    height: 95vh;
+    background: url('./183139696-2100x475.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.login-container {
+    height: 95vh;
+    background: url('./183139579-2100x741.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.signup-card {
+    margin-top: 35vh;
+}
+
+.username-group {
+    margin-bottom: 0px !important;
+}
+
+.username-input {
+    border-radius: 10px 10px 0px 0px !important;
+    padding-left: 10px;
+}
+
+.password-input {
+    border-radius: 0px 0px 10px 10px !important;
+    padding-left: 10px;
+}
+
+.form-group, .form-input {
+    border: 0px;
+    height: 40px;
+}
+
+.form-input {
+    border: 1px solid #EEEEEE;
+}

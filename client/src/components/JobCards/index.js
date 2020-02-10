@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const JobCards = () => {
     return (
         <div>
-            <div className='row job-type-container'>
-                <div className="card create-card 100vh">
+            <div className='row justify-content-center mt-5 job-type-container'>
+                <div className="card create-card mr-2 100vh">
                     <div className="card-img-top" alt="Create Job">
                         <img className="" alt="" src="" />
                     </div>
@@ -19,7 +19,7 @@ const JobCards = () => {
                     </Link>
                     </div>
                 </div>
-                <div className="card find-card 100vh">
+                <div className="card find-card ml-2 100vh">
                     <div className="card-img-top" alt="Find Job">
                         <img className="" alt="" src="" />
                     </div>

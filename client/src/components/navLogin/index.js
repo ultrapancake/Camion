@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../../logo.svg";
 import "../../App.css";
 import axios from "axios";
+import "./style.css";
 
 class Navbar extends Component {
   constructor() {
@@ -37,38 +37,57 @@ class Navbar extends Component {
 
     return (
       <div>
-        <header className="navbar App-header" id="nav-container">
-          <div className="col-4">
-            {loggedIn ? (
-              <section className="navbar-section">
-                <Link
-                  to="/"
-                  className="btn btn-link text-secondary"
-                  onClick={this.logout}
-                >
-                  <span className="text-secondary">logout</span>
-                </Link>
-              </section>
-            ) : (
-              <section className="navbar-section">
-                <Link to="/home" className="btn btn-link text-secondary">
-                  <span className="text-secondary">home</span>
-                </Link>
-                <Link to="/login" className="btn btn-link text-secondary">
-                  <span className="text-secondary">login</span>
-                </Link>
-                <Link to="/signup" className="btn btn-link">
-                  <span className="text-secondary">sign up</span>
-                </Link>
-              </section>
-            )}
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <Link className="navbar-brand" to="/">
+            <img
+              src="/camion_logo.svg"
+              className="d-inline-block align-top camion-logo"
+              alt="Camion Logo"
+            />
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ml-auto">
+              {loggedIn ? (
+                <>
+                  <li className="nav-item nav-home">
+                    <Link to="/home" className="nav-link">
+                      <span>Home</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item nav-logout">
+                    <Link to="/" className="nav-link" onClick={this.logout}>
+                      <span>Logout</span>
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item nav-login">
+                    <Link to="/login" className="nav-link">
+                      <span>Login</span>
+                    </Link>
+                  </li>
+                  <li className="nav-item nav-signup">
+                    <Link to="/signup" className="nav-link">
+                      <span className="signup-text">Sign Up</span>
+                    </Link>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
-          <div className="col-4 col-mr-auto">
-            <div id="top-filler"></div>
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Camion</h1>
-          </div>
-        </header>
+        </nav>
       </div>
     );
   }

@@ -1,84 +1,103 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import { Col, Row, Container } from "../components/grid";
-import { List, ListItem } from "../components/list";
 import axios from 'axios'
 import DeleteBtn from '../components/deleteBtn';
+import { List, ListItem } from "../components/list";
 
 //Broker and Carrier Dash
 
-// class findJobs extends Component {
-//     state = {
-//         jobs: []
-//     }
-//     findJobs = () => {
-//         const [availableJobs, setJobs] = useState([])
-//         useEffect(() => {
-//             axios.get('api/jobs')
-//                 .then(res => {
-//                     console.log('res', res.data)
-//                     setJobs(res.data)
-//                 }).catch(err => console.log(err))
-//         }, []);
-//         console.log(availableJobs);
+class FindJobs extends Component {
+    state = {
+        jobs: [],
+        id: '',
+        jobName: '',
+        size: '',
+        truckType: '',
+        weight: '',
+        pickUpDate: '',
+        dropOffDate: '',
+        pickUpLoc: '',
+        dropOffLoc: '',
+        budget: '',
+        message: ''
+    }
 
-//         deleteJob((id) => {
-//             axios.delete('/api/jobs/' + id)
-//                 .then(res => {
-//                     console.log('res', res.data)
-//                     setJobs(res.data)
-//                 }).catch(err => console.log(err))
-//         }, []);
-//     }
+    componentDidMount() {
+        this.loadJobs();
+    }
 
-//     render() {
-//         return (
-//             <div className='findJobsContainer'>
-//                 {availableJobs.map((jobs) => {
-//                     return (
-//                         <row>
-//                             <div class="card">
-//                                 <h5 class="card-header">{jobs.Job}</h5>
-//                                 <div class="card-body">
-//                                     <h5 class="card-title"></h5>
-//                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-//                                     <a href="#" class="btn btn-primary">Go somewhere</a>
-//                                 </div>
-//                             </div>
-//                         </row>
-//                     )
-//                 })}
-//             </div>
-//         )
-//     }
-// }
+    loadJobs = () => {
+        axios.get('/api/supplier')
+            .then(res => {
+                console.log('res', res)
+                this.setState(
+                    {
+                        jobs: res.data,
+                        id: '',
+                        jobName: '',
+                        size: '',
+                        truckType: '',
+                        weight: '',
+                        pickUpDate: '',
+                        dropOffDate: '',
+                        pickUpLoc: '',
+                        dropOffLoc: '',
+                        budget: '',
+                        message: ''
+                    })
+            }).catch(err => console.log(err));
+    };
 
-// export default findJobs;
+    deleteJob = id => {
+        axios.delete(`/api/supplier/${id}`)
+            .then(res => {
+               const jobs =  this.state.jobs.filter(job => job._id !== id);
+               this.setState({jobs})
+            }).catch(err => console.log(err))
+    };
 
-        // <div>
-        // <Container fluid>
-        //     <Row>
-        //         <Col size='md-6 sm-12'>
-        //             {this.state.jobs.length ? (
-        //                 <List>
-        //                     {this.state.jobs.map(job => (
-        //                         <ListItem key={jobs._id}>
-        //                             <strong>
-        //                                 {job.name}
-        //                             </strong>
-        //                             <p>
-        //                                 {job.size, job.size, job.truckType, job.weight, job.pickUpDate,
-        //                                     job.dropOffDate, job.pickUpLoc, job.dropOffLoc,
-        //                                     job.budget, job.message}
-        //                             </p>
-        //                             <DeleteBtn onClick={() => this.deleteJob(job._id)} />
-        //                         </ListItem>
-        //                     ))}
-        //                 </List>
-        //             ) : (
-        //                     <h3>No Results</h3>
-        //                 )}
-        //         </Col>
-        //     </Row>
-        // </Container>
-        // </div>
+    renderJobs = () => {
+        const { jobs } = this.state;
+        const jobsToBeRendered = jobs.map(job => {
+            return (
+                <div key={job._id} className="card">
+                    <h5 className="card-header">{job.jobName}</h5>
+                    <div className="card-body">
+                        <h5 className="card-title"></h5>
+                        <p className="card-text"><b>Job Size:</b> {job.size}</p>
+                        <p className="card-text"><b>Truck Type:</b> {job.truckType}</p>
+                        <p className="card-text"><b>Pick Up Date:</b> {job.pickUpDate}</p>
+                        <p className="card-text"><b>Pick Up Location:</b> {job.pickUpLoc}</p>
+                        <p className="card-text"><b>Drop Off Date:</b> {job.dropOffDate}</p>
+                        <p className="card-text"><b>Drop Off Location:</b> {job.dropOffLoc}</p>
+                        <p className="card-text"><b>Weight:</b> {job.weight} lbs.</p>
+                        <p className="card-text"><b>Budget:</b> ${job.budget}.00</p>
+                        <p className="card-text"><b>Special Instructions:</b> {job.message}</p>
+                        <a href="#" className="btn btn-primary">Claim Job</a>
+                        <DeleteBtn onClick={(event) => {
+                            event.preventDefault()
+                            this.deleteJob(job._id)
+                        }}
+                            className='btn btn-danger' />
+                    </div>
+                </div>
+            )
+        })
+        return jobsToBeRendered;
+    }
+
+    render() {
+        return (
+            <div className='findJobsContainer'>
+                <List>
+                    <ListItem>
+                        {this.renderJobs()}
+                    </ListItem>
+                </List>
+            </div>
+        )
+    }
+}
+
+
+export default FindJobs;

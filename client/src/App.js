@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import axios from "axios";
 
 import Navbar from "../src/components/navLogin";
-import Home from "../src/components/home";
+import Home from "./pages/Home";
 
 //Pages
 import Login from '../src/pages/Login';

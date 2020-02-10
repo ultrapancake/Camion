@@ -26,7 +26,7 @@ const JobCards = () => {
                     <div className="card-body">
                         <h5 className="card-title">Need Freight?</h5>
                         <p className="card-text">
-                            Find shipments to deliver according to your availability.</p>
+                            Find shipments to pick up and deliver according to your availability.</p>
                         <Link to="/findJobs" className="btn btn-primary">
                             Find Job
                     </Link>

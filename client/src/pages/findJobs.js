@@ -4,6 +4,7 @@ import axios from 'axios'
 import DeleteBtn from '../components/deleteBtn';
 import { List, ListItem } from "../components/list";
 import Footer from '../components/footer';
+import './style.css';
 
 //Broker and Carrier Dash
 
@@ -61,7 +62,8 @@ class FindJobs extends Component {
         const { jobs } = this.state;
         const jobsToBeRendered = jobs.map(job => {
             return (
-                <div key={job._id} className="card">
+                <div className='row justify-content-center mt-5 find-jobs-container'>
+                <div key={job._id} className="card mr-2 100vh find-jobs-card">
                     <h5 className="card-header">{job.jobName}</h5>
                     <div className="card-body">
                         <h5 className="card-title"></h5>
@@ -81,6 +83,7 @@ class FindJobs extends Component {
                         }}
                             className='btn btn-danger' />
                     </div>
+                </div>
                 </div>
             )
         })

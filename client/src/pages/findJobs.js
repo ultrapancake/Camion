@@ -65,48 +65,53 @@ class FindJobs extends Component {
     const { jobs } = this.state;
     const jobsToBeRendered = jobs.map(job => {
       return (
-        <div className="row justify-content-center mt-5 find-jobs-container">
-          <div key={job._id} className="card mr-2 100vh find-jobs-card">
-            <h5 className="card-header">{job.jobName}</h5>
-            <div className="card-body">
-              <h5 className="card-title"></h5>
-              <p className="card-text">
-                <b>Job Size:</b> {job.size}
-              </p>
-              <p className="card-text">
-                <b>Truck Type:</b> {job.truckType}
-              </p>
-              <p className="card-text">
-                <b>Pick Up Date:</b> {job.pickUpDate}
-              </p>
-              <p className="card-text">
-                <b>Pick Up Location:</b> {job.pickUpLoc}
-              </p>
-              <p className="card-text">
-                <b>Drop Off Date:</b> {job.dropOffDate}
-              </p>
-              <p className="card-text">
-                <b>Drop Off Location:</b> {job.dropOffLoc}
-              </p>
-              <p className="card-text">
-                <b>Weight:</b> {job.weight} lbs.
-              </p>
-              <p className="card-text">
-                <b>Budget:</b> ${job.budget}.00
-              </p>
-              <p className="card-text">
-                <b>Special Instructions:</b> {job.message}
-              </p>
-              <a href="#" className="btn btn-primary">
-                Claim Job
-              </a>
-              <DeleteBtn
+        <div className="fluid-container find-jobs-page-container">
+          <div className="row justify-content-center find-jobs-container">
+            <div key={job._id} className="card find-jobs-card mt-5">
+      <h5 className="card-header">{job.jobName}</h5>
+      <div className="card-body">
+        <div className="card-text">
+          <div className="row">
+      <p>Job Size: </p><p>{job.size}</p>
+          </div>
+          <div className="row">
+      <p>Truck Type: </p><p>{job.truckType}</p>
+          </div>
+          <div className="row">
+            <p>Pick Up Date: </p><p>{job.pickUpDate}</p>
+          </div>
+          <div className="row">
+          <p>Pick Up Location: </p><p>{job.pickUpLoc}</p>
+          </div>
+          <div className="row">
+            <p>Drop Off Date: </p><p>{job.dropOffDate}</p>
+          </div>
+          <div className="row">
+            <p>Drop Off Location: </p><p>{job.dropOffLoc}</p>
+          </div>
+          <div className="row">
+            <p>Weight: </p><p>{job.weight} lbs.</p>
+          </div>
+          <div className="row">
+            <p>Budget: </p><p>${job.budget}.00</p>
+          </div>
+          <div className="row">
+            <p>Special Instructions: </p><p>{job.messages}</p>
+          </div>
+          <div className="row">
+            <button className="btn btn-primary">
+              Claim Job
+            </button>
+            <DeleteBtn
                 onClick={event => {
                   event.preventDefault();
                   this.deleteJob(job._id);
                 }}
                 className="btn btn-danger"
               />
+          </div>
+        </div>
+      </div>
             </div>
           </div>
         </div>

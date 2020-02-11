@@ -121,3 +121,7 @@ button:hover {
 .submit-button {
     margin-top: 50px;
 }
+
+.find-jobs-card {
+    width: 60rem !important;
+}

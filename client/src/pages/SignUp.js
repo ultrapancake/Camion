@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import { withRouter } from 'react-router'
+import { withRouter } from "react-router";
 import axios from "axios";
+import Footer from "../components/footer";
 
 class Signup extends Component {
-    state = {
-      username: "",
-      password: "",
-      confirmPassword: ""
-    };
+  state = {
+    username: "",
+    password: "",
+    confirmPassword: ""
+  };
 
-  
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
     //request to server to add a new username/password
-    console.log('handleSubmit Object:', { username: this.state.username, password: this.state.password });
+    console.log("handleSubmit Object:", {
+      username: this.state.username,
+      password: this.state.password
+    });
     axios
       .post("/api/user/", {
         username: this.state.username,
@@ -31,7 +34,7 @@ class Signup extends Component {
         if (!response.data.errmsg) {
           console.log("successful signup");
           //Redirect to login page
-          this.props.history.push('/login', {user: this.state.username})
+          this.props.history.push("/login", { user: this.state.username });
         } else {
           console.log("username already taken");
         }
@@ -40,60 +43,57 @@ class Signup extends Component {
         console.log("signup error: ");
         console.log(error);
       });
-  }
+  };
 
   render() {
-    console.log('doesPropsExist:', this.props);
+    console.log("doesPropsExist:", this.props);
     return (
-      <div className="SignupForm">
-        <h4>Sign up</h4>
-        <form className="form-horizontal">
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="username">
-                Username
-              </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                type="text"
-                id="username"
-                name="username"
-                placeholder="Username"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
+      <div>
+        <div className="fluid-container signup-container">
+          <div className="row">
+            <div className="col-12">
+              <div className="card signup-card mx-auto">
+                <div className="card-body">
+                  <h5 className="card-title">
+                    Create Your Free Account
+                </h5>
+                  <form>
+                    <div className="form-group username-group">
+                      <input
+                        className="form-input username-input"
+                        placeholder="Username"
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group password-group">
+                      <input
+                        className="form-input password-input"
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.handleSubmit}
+                      type="submit"
+                    >
+                      Create Account
+                  </button>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="form-group">
-            <div className="col-1 col-ml-auto">
-              <label className="form-label" htmlFor="password">
-                Password:{" "}
-              </label>
-            </div>
-            <div className="col-3 col-mr-auto">
-              <input
-                className="form-input"
-                placeholder="password"
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-          </div>
-          <div className="form-group ">
-            <div className="col-7"></div>
-            <button
-              className="btn btn-primary col-1 col-mr-auto"
-              onClick={this.handleSubmit}
-              type="submit"
-            >
-              Sign up
-            </button>
-          </div>
-        </form>
+
+        </div>
+        <Footer />
       </div>
     );
   }

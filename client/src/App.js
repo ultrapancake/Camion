@@ -5,11 +5,11 @@ import axios from "axios";
 import Navbar from "../src/components/navLogin";
 
 //Pages
-import Login from '../src/pages/Login';
+import Login from "../src/pages/Login";
 import Home from "./pages/Home";
-import SignUp from '../src/pages/SignUp';
+import SignUp from "../src/pages/SignUp";
 import SupplyJobs from "../src/pages/SupplyJobs";
-import FindJobs from '../src/pages/FindJobs';
+import FindJobs from "./pages/findJobs";
 import Splash from "../src/pages/Splash";
 
 class App extends Component {
@@ -62,21 +62,34 @@ class App extends Component {
         {this.state.loggedIn && <p>Join the party, {this.state.username}!</p>}
         {/* Routes to different components */}
         <Route exact path="/" component={Splash} />
-        <Route exact path='/home' component={Home} />
+        <Route exact path="/home" component={Home} />
         <Route
-          //link to='/Login' ...component 
+          //link to='/Login' ...component
           path="/login"
-          render={() => <Login updateUser={this.updateUser} username={this.state.username} />}
+          render={() => (
+            <Login
+              updateUser={this.updateUser}
+              username={this.state.username}
+            />
+          )}
         />
         <Route
           //link to='/SignUp'
-          path="/signup" render={() => <SignUp signup={this.signup} username={this.state.username} />} />
+          path="/signup"
+          render={() => (
+            <SignUp signup={this.signup} username={this.state.username} />
+          )}
+        />
         <Route
           //link to='/supplyJobs'
-          path='/supplyJobs' render={() => <SupplyJobs supplyJobs={this.state.supplyJobs} />} />
+          path="/supplyJobs"
+          render={() => <SupplyJobs supplyJobs={this.state.supplyJobs} />}
+        />
         <Route
           //link to='/findJobs'
-        path='/findJobs' render={() => <FindJobs findJobs={this.findJobs} />} />
+          path="/findJobs"
+          render={() => <FindJobs findJobs={this.findJobs} />}
+        />
       </div>
     );
   }

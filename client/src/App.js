@@ -9,7 +9,7 @@ import Login from "../src/pages/Login";
 import Home from "./pages/Home";
 import SignUp from "../src/pages/SignUp";
 import SupplyJobs from "../src/pages/SupplyJobs";
-import FindJobs from "./pages/findJobs";
+import FindJobs from "../src/pages/findJobs";
 import Splash from "../src/pages/Splash";
 
 class App extends Component {

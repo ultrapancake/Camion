@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import axios from "axios";
 import DeleteBtn from "../components/deleteBtn";
 import { List, ListItem } from "../components/list";

@@ -10,13 +10,13 @@ class Signup extends Component {
     confirmPassword: ""
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
 
     //request to server to add a new username/password
@@ -48,54 +48,53 @@ class Signup extends Component {
   render() {
     console.log("doesPropsExist:", this.props);
     return (
-      <>
-      <div className="fluid-container signup-container">
-        <div className="row">
-          <div className="col-12">
-            <div className="card signup-card mx-auto">
-              <div className="card-body">
-                <h5 className="card-title">
-                  Create Your Free Account
+      <div>
+        <div className="fluid-container signup-container">
+          <div className="row">
+            <div className="col-12">
+              <div className="card signup-card mx-auto">
+                <div className="card-body">
+                  <h5 className="card-title">
+                    Create Your Free Account
                 </h5>
-                <form>
-                  <div className="form-group username-group">
-                    <input
-                      className="form-input username-input"
-                      placeholder="Username"
-                      type="text"
-                      id="username"
-                      name="username"
-                      value={this.state.username}
-                      onChange={this.handleChange}
-                    />
-                  </div>
-                  <div className="form-group password-group">
-                    <input
-                      className="form-input password-input"
-                      placeholder="Password"
-                      type="password"
-                      name="password"
-                      value={this.state.password}
-                      onChange={this.handleChagne}
-                    />
-                  </div>
-                  <button
-                    className="btn btn-primary"
-                    onClick={this.handleSubmit}
-                    type="submit"
-                  >
-                    Create Account
+                  <form>
+                    <div className="form-group username-group">
+                      <input
+                        className="form-input username-input"
+                        placeholder="Username"
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={this.state.username}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <div className="form-group password-group">
+                      <input
+                        className="form-input password-input"
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.handleChange}
+                      />
+                    </div>
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.handleSubmit}
+                      type="submit"
+                    >
+                      Create Account
                   </button>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-      </div>
-      <Footer />
-      </>
 
+        </div>
+        <Footer />
+      </div>
     );
   }
 }

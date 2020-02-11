@@ -67,7 +67,7 @@ class FindJobs extends Component {
       return (
         <div className="fluid-container find-jobs-page-container">
           <div className="row justify-content-center find-jobs-container">
-            <div key={job._id} className="card find-jobs-card mt-5">
+            <div key={job._id} className="card find-jobs-card mt-2">
       <h5 className="card-header">{job.jobName}</h5>
       <div className="card-body">
         <div className="card-text">

@@ -10,13 +10,13 @@ class Signup extends Component {
     confirmPassword: ""
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
     //request to server to add a new username/password
@@ -46,7 +46,7 @@ class Signup extends Component {
   };
 
   render() {
-    console.log("doesPropsExist:", this.props);
+    // console.log("doesPropsExist:", this.props);
     return (
       <div>
         <div className="fluid-container signup-container">
@@ -54,9 +54,7 @@ class Signup extends Component {
             <div className="col-12">
               <div className="card signup-card mx-auto">
                 <div className="card-body">
-                  <h5 className="card-title">
-                    Create Your Free Account
-                </h5>
+                  <h5 className="card-title">Create Your Free Account</h5>
                   <form>
                     <div className="form-group username-group">
                       <input
@@ -85,13 +83,12 @@ class Signup extends Component {
                       type="submit"
                     >
                       Create Account
-                  </button>
+                    </button>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-
         </div>
         <Footer />
       </div>

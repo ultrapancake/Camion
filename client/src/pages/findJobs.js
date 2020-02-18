@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 import axios from "axios";
-import DeleteBtn from "../components/deleteBtn";
 import { List, ListItem } from "../components/list";
 import Footer from "../components/footer";
 import "./style.css";
@@ -102,13 +101,13 @@ class FindJobs extends Component {
             <button className="btn btn-primary">
               Claim Job
             </button>
-            <DeleteBtn
+            <button className="btn btn-danger"
                 onClick={event => {
                   event.preventDefault();
                   this.deleteJob(job._id);
-                }}
-                className="btn btn-danger"
-              />
+                }}>
+                X
+            </button>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const schemaSupplier = new Schema({
   jobName: { type: String, unique: true },
+  contact: { type: Number },
   size: { type: String },
   truckType: { type: String },
   weight: { type: Number },

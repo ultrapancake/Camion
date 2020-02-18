@@ -12,6 +12,7 @@ class FindJobs extends Component {
     jobs: [],
     id: "",
     jobName: "",
+    contact: "",
     size: "",
     truckType: "",
     weight: "",
@@ -36,6 +37,7 @@ class FindJobs extends Component {
           jobs: res.data,
           id: "",
           jobName: "",
+          contact: "",
           size: "",
           truckType: "",
           weight: "",
@@ -70,6 +72,9 @@ class FindJobs extends Component {
       <h5 className="card-header">{job.jobName}</h5>
       <div className="card-body">
         <div className="card-text">
+        <div className="row">
+            <p>Contact: </p><p>{job.contact}</p>
+          </div>
           <div className="row">
       <p>Job Size: </p><p>{job.size}</p>
           </div>
@@ -95,7 +100,7 @@ class FindJobs extends Component {
             <p>Budget: </p><p>${job.budget}.00</p>
           </div>
           <div className="row">
-            <p>Special Instructions: </p><p>{job.messages}</p>
+            <p>Special Instructions: </p><p>{job.message}</p>
           </div>
           <div className="row">
             <button className="btn btn-primary">

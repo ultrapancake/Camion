@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { Redirect } from "react-router-dom";
 import axios from "axios";
-import DeleteBtn from "../components/deleteBtn";
 import { List, ListItem } from "../components/list";
 import Footer from "../components/footer";
 import "./style.css";
@@ -13,6 +12,7 @@ class FindJobs extends Component {
     jobs: [],
     id: "",
     jobName: "",
+    contact: "",
     size: "",
     truckType: "",
     weight: "",
@@ -21,7 +21,7 @@ class FindJobs extends Component {
     pickUpLoc: "",
     dropOffLoc: "",
     budget: "",
-    message: ""
+    message: "",
   };
 
   componentDidMount() {
@@ -37,6 +37,7 @@ class FindJobs extends Component {
           jobs: res.data,
           id: "",
           jobName: "",
+          contact: "",
           size: "",
           truckType: "",
           weight: "",
@@ -61,16 +62,24 @@ class FindJobs extends Component {
       .catch(err => console.log(err));
   };
 
+  // claimJob = () => {
+  //   const element =  document.getElementByID('jobCard');
+  //   element.classList.toggle('job-style')
+  // }
+
   renderJobs = () => {
     const { jobs } = this.state;
     const jobsToBeRendered = jobs.map(job => {
       return (
         <div className="fluid-container find-jobs-page-container">
           <div className="row justify-content-center find-jobs-container">
-            <div key={job._id} className="card find-jobs-card mt-2">
+            <div key={job._id} className="card find-jobs-card mt-2" id='jobCard'>
       <h5 className="card-header">{job.jobName}</h5>
       <div className="card-body">
         <div className="card-text">
+        <div className="row">
+            <p>Contact: </p><p>{job.contact}</p>
+          </div>
           <div className="row">
       <p>Job Size: </p><p>{job.size}</p>
           </div>
@@ -96,19 +105,23 @@ class FindJobs extends Component {
             <p>Budget: </p><p>${job.budget}.00</p>
           </div>
           <div className="row">
-            <p>Special Instructions: </p><p>{job.messages}</p>
+            <p>Special Instructions: </p><p>{job.message}</p>
           </div>
           <div className="row">
-            <button className="btn btn-primary">
+            <button className="btn btn-primary"
+              /*onClick={event => {
+                event.preventDefault();
+                this.classList.toggle('job-style');
+                }*/>
               Claim Job
             </button>
-            <DeleteBtn
+            <button className="btn btn-danger"
                 onClick={event => {
                   event.preventDefault();
                   this.deleteJob(job._id);
-                }}
-                className="btn btn-danger"
-              />
+                }}>
+                X
+            </button>
           </div>
         </div>
       </div>

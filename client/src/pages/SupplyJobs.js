@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 class SupplyJobs extends Component {
   state = {
     jobName: "",
+    contact: "",
     size: "",
     truckType: "",
     weight: "",
@@ -24,6 +25,7 @@ class SupplyJobs extends Component {
 
     const jobsData = {
       jobName: this.state.jobName,
+      contact: this.state.contact,
       size: this.state.size,
       truckType: this.state.truckType,
       weight: this.state.weight,
@@ -46,6 +48,7 @@ class SupplyJobs extends Component {
       });
     this.setState({
       jobName: "",
+      contact: "",
       size: "",
       truckType: "",
       weight: "",
@@ -91,8 +94,18 @@ class SupplyJobs extends Component {
                           placeHolder="Your Job Name Here"
                         />
                       </div>
+                      <div className="form-group contact">
+                        <input
+                          onChange={this.handleInputChange}
+                          type="number"
+                          name="contact"
+                          class="form-control"
+                          id="contact"
+                          placeHolder="Contact Number"
+                        />
+                      </div>
                       <div className="form-group size-of-shipment">
-                        <lable for="jobSize"><span>Size of Shipment</span></lable>
+                        <label for="jobSize"><span>Size of Shipment</span></label>
                         <select
                           onChange={this.handleInputChange}
                           name="size"

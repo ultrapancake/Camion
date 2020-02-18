@@ -21,7 +21,7 @@ class FindJobs extends Component {
     pickUpLoc: "",
     dropOffLoc: "",
     budget: "",
-    message: ""
+    message: "",
   };
 
   componentDidMount() {
@@ -62,13 +62,18 @@ class FindJobs extends Component {
       .catch(err => console.log(err));
   };
 
+  // claimJob = () => {
+  //   const element =  document.getElementByID('jobCard');
+  //   element.classList.toggle('job-style')
+  // }
+
   renderJobs = () => {
     const { jobs } = this.state;
     const jobsToBeRendered = jobs.map(job => {
       return (
         <div className="fluid-container find-jobs-page-container">
           <div className="row justify-content-center find-jobs-container">
-            <div key={job._id} className="card find-jobs-card mt-2">
+            <div key={job._id} className="card find-jobs-card mt-2" id='jobCard'>
       <h5 className="card-header">{job.jobName}</h5>
       <div className="card-body">
         <div className="card-text">
@@ -103,7 +108,11 @@ class FindJobs extends Component {
             <p>Special Instructions: </p><p>{job.message}</p>
           </div>
           <div className="row">
-            <button className="btn btn-primary">
+            <button className="btn btn-primary"
+              /*onClick={event => {
+                event.preventDefault();
+                this.classList.toggle('job-style');
+                }*/>
               Claim Job
             </button>
             <button className="btn btn-danger"
